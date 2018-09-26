@@ -8,10 +8,10 @@ vector <int> gray(6);
 
 int check()
 {
-  if(9*gray[5] + 8*gray[4] + 6*gray[3]+ 5*gray[2]+ 4*gray[1]+ gray[0] < 12)
-    return 1;
-  else
-    return 0;
+    if(9*gray[5] + 8*gray[4] + 6*gray[3]+ 5*gray[2]+ 4*gray[1]+ gray[0] < 12)
+      return 1;
+    else
+      return 0;
 }
 
 int main()
@@ -19,7 +19,7 @@ int main()
     stack <int> st;
     int k = gray.size();
     int digit;
-    int chk;
+    int m = 1;
     
     while(k >= 1)
     {
@@ -35,7 +35,7 @@ int main()
     
     while(!st.empty())
     {  
-      digit = st.top();
+      digit = st.top();                   
       st.pop();
     
       if(gray[gray.size()-digit] == 0)
@@ -43,15 +43,12 @@ int main()
       else
         gray[gray.size()-digit] = 0;
     
-      int j = 1;
-      while(digit - j > 0 && j < gray.size()+1)
+      while(digit - m > 0 && m <= gray.size())
       {
-        st.push(digit - j);
-        j++;
+        st.push(digit - m);
+        m++;
       }
     
-      j = 1;
-      
       for(int i = 0; i < gray.size(); i++)
       {
         cout << gray[i] << ' ';
@@ -59,6 +56,6 @@ int main()
       if(check())
         cout << "<-";
       cout << endl;
+      m = 1;
     }
-        
 }
